@@ -2,14 +2,14 @@
 %global user prometheus
 %global group prometheus
 
-Name: artifactory_exporter
-Version: 1.16.1
+Name:    systemd_exporter
+Version: 0.7.0
 Release: 1%{?dist}
-Summary: Prometheus exporter for JFrog Artifactory stats.
+Summary: Prometheus exporter for systemd units, written in Go.
 License: ASL 2.0
-URL:     https://github.com/peimanja/artifactory_exporter
+URL:     https://github.com/prometheus-community/systemd_exporter
 
-Source0: https://github.com/peimanja/artifactory_exporter/releases/download/v%{version}/%{name}-v%{version}-linux-amd64.tar.gz
+Source0: https://github.com/prometheus-community/systemd_exporter/releases/download/v%{version}/%{name}-%{version}.linux-amd64.tar.gz
 Source1: %{name}.unit
 Source2: %{name}.default
 
@@ -17,10 +17,10 @@ Source2: %{name}.default
 Requires(pre): shadow-utils
 
 %description
-Collects metrics about an Artifactory system
+Systemd unit monitoring and resource usage
 
 %prep
-%setup -q -D -c %{name}-v%{version}-linux-amd64
+%setup -q -n %{name}-%{version}.linux-amd64
 
 %build
 /bin/true
@@ -54,5 +54,5 @@ exit 0
 %{_unitdir}/%{name}.service
 
 %changelog
-* Thu Apr 02 2026 Ivan Garcia <igarcia@cloudox.org> - 1.16.1
-- Initial packaging for the 1.16.1 branch
+* Wed Jun 10 2026 Ivan Garcia <igarcia@cloudox.org> - 0.7.0
+- Initial packaging for the 0.7.0 branch
